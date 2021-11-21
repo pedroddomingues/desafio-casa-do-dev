@@ -11,6 +11,7 @@ import { MongoExceptionFilter } from "./exceptions/mongo-exception.filter";
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
+	app.enableCors();
 	app.useGlobalPipes(new ValidationPipe());
 	app.useGlobalFilters(new MongoExceptionFilter());
 	const options: SwaggerDocumentOptions = {
