@@ -1,26 +1,54 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Schema as mongoSchema } from "mongoose";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
-import { User } from "../../users/entities/user.entity";
-import { checkIfTransactionIsTransfer } from "./transaction.validation";
+import {
+	checkIfTransactionIsPayment,
+	checkIfTransactionIsTransfer,
+} from "./transaction.validation";
+import { TransactionType } from "../../constants/transaction.type";
+import { Account } from "src/accounts/entities/account.entity";
 
 export type TransactionDocument = Transaction & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Transaction {
-	@Prop({ type: mongoSchema.Types.ObjectId, ref: "User", required: true })
-	from: User;
-	@Prop({ type: mongoSchema.Types.ObjectId, ref: "User", required: checkIfTransactionIsTransfer })
-	to: User;
+	@ApiProperty({ type: () => Account })
 	@Prop({
-		enum: ["deposit", "withdrawal", "income_transfer", "outcome_transfer", "payment"],
+		type: mongoSchema.Types.ObjectId,
+		ref: "Account",
+		required: true,
+	})
+	from: Account;
+
+	@ApiPropertyOptional({ type: () => Account })
+	@Prop({
+		type: mongoSchema.Types.ObjectId,
+		ref: "Account",
+		required: checkIfTransactionIsTransfer,
+	})
+	to: Account;
+
+	@ApiProperty()
+	@Prop({
+		enum: TransactionType,
 		required: true,
 	})
 	type: string;
-	@Prop({ required: true })
-	amount: number;
+
+	@ApiProperty()
+	@Prop({ required: true, min: 0.01 })
+	value: number;
+
+	@ApiPropertyOptional()
+	@Prop({ required: checkIfTransactionIsPayment })
+	description?: string;
+
+	@ApiPropertyOptional()
 	@Prop()
-	description: string;
+	name?: string;
+
+	@ApiProperty()
 	@Prop()
 	createdAt: Date;
 }

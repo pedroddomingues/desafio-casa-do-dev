@@ -15,7 +15,10 @@ export class AuthController {
 		type: AuthTokenDto,
 	})
 	async login(@Body() loginWithCPF: LoginWithCpfDto) {
-		return this.authService.loginWithCPF(loginWithCPF);
+		const user = await this.authService.validateUserByCPF(
+			loginWithCPF.cpf,
+			loginWithCPF.password
+		);
+		return this.authService.loginWithCPF(user);
 	}
 }
-

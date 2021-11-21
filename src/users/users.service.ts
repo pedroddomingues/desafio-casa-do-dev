@@ -4,7 +4,6 @@ import { InjectModel } from "@nestjs/mongoose";
 import * as bcrypt from "bcrypt";
 
 import { CreatedUserDto, CreateUserDto } from "./dto/create-user.dto";
-import { UpdateUserDto } from "./dto/update-user.dto";
 import { User, UserDocument } from "./entities/user.entity";
 import { AccountsService } from "src/accounts/accounts.service";
 
@@ -47,22 +46,17 @@ export class UsersService {
 			.exec();
 	}
 
-	findAll() {
-		return `This action returns all users`;
-	}
-
 	async findOneByCPF(
 		cpf: string
 	): Promise<(User & UserDocument & { _id: any })> {
-		const user = await this.userModel.findOne({ cpf: cpf });
+		const user = await this.userModel.findOne({ cpf });
 		return user;
 	}
 
-	update(id: number, updateUserDto: UpdateUserDto) {
-		return `This action updates a #${id} user`;
-	}
-
-	remove(id: number) {
-		return `This action removes a #${id} user`;
+	async findOneByID(
+		id: string
+	): Promise<(User & UserDocument & { _id: any })> {
+		const user = await this.userModel.findById(id);
+		return user;
 	}
 }

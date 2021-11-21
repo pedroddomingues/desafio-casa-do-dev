@@ -5,7 +5,6 @@ import { ConfigModule } from "@nestjs/config";
 import { UsersModule } from "./users/users.module";
 import { AccountsModule } from "./accounts/accounts.module";
 import { TransactionsModule } from "./transactions/transactions.module";
-import { SequentialKeysService } from "./sequential-keys/sequential-keys.service";
 import { SequentialKeysModule } from "./sequential-keys/sequential-keys.module";
 import { AuthModule } from './auth/auth.module';
 
@@ -17,11 +16,11 @@ import { AuthModule } from './auth/auth.module';
 		MongooseModule.forRoot(
 			`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.s5zun.mongodb.net/${process.env.MONGODB_DBNAME}?retryWrites=true&w=majority`
 		),
+		AuthModule,
 		UsersModule,
 		AccountsModule,
 		TransactionsModule,
 		SequentialKeysModule,
-		AuthModule,
 	],
 	controllers: [],
 	providers: [],

@@ -35,4 +35,14 @@ export class SequentialKeysService {
 
 		return sequentialKey.value;
 	}
+
+	sequentialKeyToZerosString(sequentialKey: Number, size: number): String {
+		const string = sequentialKey.toString();
+		const stringSize = string.length;
+		let result = "";
+		for (let i = 0; i < size - stringSize; i++) {
+			result += "0";
+		}
+		return result + string;
+	}
 }

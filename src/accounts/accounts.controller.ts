@@ -6,11 +6,18 @@ import {
 	Patch,
 	Param,
 	Delete,
+	UseGuards,
+	Req,
+	Query,
 } from "@nestjs/common";
+import { Request } from "express";
+import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
+import { PaginationQueryDto } from "src/common/query.dto";
 import { AccountsService } from "./accounts.service";
 import { CreateAccountDto } from "./dto/create-account.dto";
 import { UpdateAccountDto } from "./dto/update-account.dto";
 
+@UseGuards(JwtAuthGuard)
 @Controller("accounts")
 export class AccountsController {
 	constructor(private readonly accountsService: AccountsService) {}
@@ -20,21 +27,13 @@ export class AccountsController {
 		return this.accountsService.create(createAccountDto);
 	}
 
-	// @Get(":id")
-	// findOne(@Param("id") id: string) {
-	// 	return this.accountsService.findOne(+id);
-	// }
+	@Get("/balance")
+	getBalance(@Req() req: Request) {
+		return this.accountsService.getBalance(req);
+	}
 
-	// @Patch(":id")
-	// update(
-	// 	@Param("id") id: string,
-	// 	@Body() updateAccountDto: UpdateAccountDto
-	// ) {
-	// 	return this.accountsService.update(+id, updateAccountDto);
-	// }
-
-	// @Delete(":id")
-	// remove(@Param("id") id: string) {
-	// 	return this.accountsService.remove(+id);
-	// }
+	@Get("/statement")
+	getStatement(@Req() req: Request, @Query() query: PaginationQueryDto) {
+		return this.accountsService.getStatement(req, query);
+	}
 }

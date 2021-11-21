@@ -29,19 +29,4 @@ export class UsersController {
 		const createdUser = this.usersService.create(createUserDto);
 		return createdUser;
 	}
-
-	@Get()
-	findOne(@Headers("cpf") cpf: string) {
-		return this.usersService.findOneByCPF(cpf);
-	}
-
-	// @Patch(":id")
-	// update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
-	// 	return this.usersService.update(+id, updateUserDto);
-	// }
-
-	// @Delete(":id")
-	// remove(@Param("id") id: string) {
-	// 	return this.usersService.remove(+id);
-	// }
 }

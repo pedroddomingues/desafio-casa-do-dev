@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document, Schema as mongoSchema } from "mongoose";
+import { Document } from "mongoose";
 
 export type SequentialKeyDocument = SequentialKey & Document;
 
@@ -7,6 +7,7 @@ export type SequentialKeyDocument = SequentialKey & Document;
 export class SequentialKey {
 	@Prop({ required: true })
 	type: string;
+
 	@Prop({ required: true })
 	value: number;
 }
