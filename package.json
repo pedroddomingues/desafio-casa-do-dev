@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "Desafio Casa do Dev 2021",
   "license": "MIT",
+  "engines": {
+    "node": "16.3.0"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
