@@ -1,1 +1,1 @@
-service: yarn start:prod
+worker: node dist/main.js
