@@ -7,7 +7,7 @@ Esta é a minha implementação do desafio proposto pela Casa do Dev na edição
 - **Nestjs -** Um framework em node que  roda com o TypeScript no express por baixo dos panos.
 - **Mongodb -** Um banco de dados NoSQL baseado em documentos.
 
-# Servidor de teste rodando no [https://desafio-casa-do-dev.herokuapp.com/api/](endereço) abaixo:
+# Servidor de teste rodando no [link](https://desafio-casa-do-dev.herokuapp.com/api/) abaixo:
 [https://desafio-casa-do-dev.herokuapp.com/api/](https://desafio-casa-do-dev.herokuapp.com/api/)
 
 ## Como rodar
