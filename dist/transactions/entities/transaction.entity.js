@@ -16,6 +16,7 @@ const swagger_1 = require("@nestjs/swagger");
 const transaction_validation_1 = require("./transaction.validation");
 const transaction_type_1 = require("../../constants/transaction.type");
 const account_entity_1 = require("../../accounts/entities/account.entity");
+const depositant_dto_1 = require("../dto/depositant.dto");
 let Transaction = class Transaction {
 };
 __decorate([
@@ -55,10 +56,10 @@ __decorate([
     __metadata("design:type", String)
 ], Transaction.prototype, "description", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)(),
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Transaction.prototype, "name", void 0);
+    (0, swagger_1.ApiPropertyOptional)({ type: () => depositant_dto_1.DepositantDto }),
+    __metadata("design:type", depositant_dto_1.DepositantDto)
+], Transaction.prototype, "depositant", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     (0, mongoose_1.Prop)(),

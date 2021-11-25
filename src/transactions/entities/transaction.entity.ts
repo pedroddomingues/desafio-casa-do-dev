@@ -8,6 +8,7 @@ import {
 } from "./transaction.validation";
 import { TransactionType } from "../../constants/transaction.type";
 import { Account } from "src/accounts/entities/account.entity";
+import { DepositantDto } from "../dto/depositant.dto";
 
 export type TransactionDocument = Transaction & Document;
 
@@ -44,9 +45,9 @@ export class Transaction {
 	@Prop({ required: checkIfTransactionIsPayment })
 	description?: string;
 
-	@ApiPropertyOptional()
 	@Prop()
-	name?: string;
+	@ApiPropertyOptional({ type: () => DepositantDto})
+	depositant?: DepositantDto;
 
 	@ApiProperty()
 	@Prop()

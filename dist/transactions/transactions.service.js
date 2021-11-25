@@ -35,8 +35,8 @@ let TransactionsService = class TransactionsService {
             throw new common_1.HttpException({
                 message: "Account not found",
             }, common_1.HttpStatus.BAD_REQUEST);
-        const { value, name, type } = createTransactionDto;
-        const newTransactionDto = { from: account, value, name, type };
+        const { value, depositant, type } = createTransactionDto;
+        const newTransactionDto = { from: account, value, depositant, type };
         const transaction = await this.transactionModel.create(newTransactionDto);
         this.pushTransaction(account, transaction);
         account.balance = this.newBalance(account, value, type, account._id.toString());

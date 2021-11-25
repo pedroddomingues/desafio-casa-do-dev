@@ -24,6 +24,7 @@ async function bootstrap() {
 			"Esta é a documentação da API proposta no Desafio Casa do Dev."
 		)
 		.setVersion("1.0")
+		.addBearerAuth()
 		.build();
 	const document = SwaggerModule.createDocument(app, config, options);
 	SwaggerModule.setup("api", app, document);

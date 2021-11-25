@@ -44,8 +44,8 @@ export class TransactionsService {
 				},
 				HttpStatus.BAD_REQUEST
 			);
-		const { value, name, type } = createTransactionDto;
-		const newTransactionDto = { from: account, value, name, type };
+		const { value, depositant, type } = createTransactionDto;
+		const newTransactionDto = { from: account, value, depositant, type };
 		const transaction = await this.transactionModel.create(
 			newTransactionDto
 		);

@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const query_dto_1 = require("../common/query.dto");
 const accounts_service_1 = require("./accounts.service");
@@ -40,6 +41,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AccountsController.prototype, "create", null);
 __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.Get)("/balance"),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
@@ -47,6 +49,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AccountsController.prototype, "getBalance", null);
 __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.Get)("/statement"),
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Query)()),

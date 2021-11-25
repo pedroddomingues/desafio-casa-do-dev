@@ -9,33 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaginationQueryDto = void 0;
+exports.DepositantDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const brazilian_class_validator_1 = require("brazilian-class-validator");
 const class_validator_1 = require("class-validator");
-const class_validator_date_1 = require("class-validator-date");
-class PaginationQueryDto {
+class DepositantDto {
 }
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsPositive)(),
-    __metadata("design:type", Number)
-], PaginationQueryDto.prototype, "limit", void 0);
+    (0, swagger_1.ApiProperty)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], DepositantDto.prototype, "name", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsPositive)(),
-    __metadata("design:type", Number)
-], PaginationQueryDto.prototype, "offset", void 0);
-__decorate([
-    (0, class_validator_1.IsDateString)(),
+    (0, brazilian_class_validator_1.IsCPF)(),
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], PaginationQueryDto.prototype, "startDate", void 0);
-__decorate([
-    (0, class_validator_1.IsDateString)(),
-    (0, class_validator_date_1.IsAfterDate)("startDate"),
-    (0, class_validator_date_1.IsBeforeDate)("now"),
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], PaginationQueryDto.prototype, "endDate", void 0);
-exports.PaginationQueryDto = PaginationQueryDto;
-//# sourceMappingURL=query.dto.js.map
+], DepositantDto.prototype, "cpf", void 0);
+exports.DepositantDto = DepositantDto;
+//# sourceMappingURL=depositant.dto.js.map

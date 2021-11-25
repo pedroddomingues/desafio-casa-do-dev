@@ -10,6 +10,7 @@ import {
 	Req,
 	Query,
 } from "@nestjs/common";
+import { ApiBearerAuth } from "@nestjs/swagger";
 import { Request } from "express";
 import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
 import { PaginationQueryDto } from "src/common/query.dto";
@@ -27,11 +28,13 @@ export class AccountsController {
 		return this.accountsService.create(createAccountDto);
 	}
 
+	@ApiBearerAuth()
 	@Get("/balance")
 	getBalance(@Req() req: Request) {
 		return this.accountsService.getBalance(req);
 	}
 
+	@ApiBearerAuth()
 	@Get("/statement")
 	getStatement(@Req() req: Request, @Query() query: PaginationQueryDto) {
 		return this.accountsService.getStatement(req, query);

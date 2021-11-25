@@ -11,7 +11,9 @@ import { UpdateTransactionDto } from "./dto/update-transaction.dto";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { TransactionType } from "src/constants/transaction.type";
 import { Request } from "express";
+import { ApiBearerAuth } from "@nestjs/swagger";
 
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller("transactions")
 export class TransactionsController {

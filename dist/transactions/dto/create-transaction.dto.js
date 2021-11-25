@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateTransactionDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const transaction_type_1 = require("../../constants/transaction.type");
+const depositant_dto_1 = require("./depositant.dto");
 class CreateTransactionDto {
 }
 __decorate([
@@ -41,10 +43,11 @@ __decorate([
 ], CreateTransactionDto.prototype, "cpf", void 0);
 __decorate([
     (0, class_validator_1.ValidateIf)((o) => o.type === transaction_type_1.TransactionType.deposit),
-    (0, class_validator_1.IsString)(),
-    (0, swagger_1.ApiPropertyOptional)(),
-    __metadata("design:type", String)
-], CreateTransactionDto.prototype, "name", void 0);
+    (0, class_validator_1.ValidateNested)(),
+    (0, class_transformer_1.Type)(() => depositant_dto_1.DepositantDto),
+    (0, swagger_1.ApiPropertyOptional)({ type: () => depositant_dto_1.DepositantDto }),
+    __metadata("design:type", depositant_dto_1.DepositantDto)
+], CreateTransactionDto.prototype, "depositant", void 0);
 __decorate([
     (0, class_validator_1.ValidateIf)((o) => o.type === transaction_type_1.TransactionType.payment),
     (0, class_validator_1.IsString)(),

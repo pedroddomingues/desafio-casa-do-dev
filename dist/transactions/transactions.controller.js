@@ -18,6 +18,7 @@ const transactions_service_1 = require("./transactions.service");
 const create_transaction_dto_1 = require("./dto/create-transaction.dto");
 const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const transaction_type_1 = require("../constants/transaction.type");
+const swagger_1 = require("@nestjs/swagger");
 let TransactionsController = class TransactionsController {
     constructor(transactionsService) {
         this.transactionsService = transactionsService;
@@ -54,6 +55,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TransactionsController.prototype, "create", null);
 TransactionsController = __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)("transactions"),
     __metadata("design:paramtypes", [transactions_service_1.TransactionsService])
