@@ -1,3 +1,8 @@
+# RESULTADO
+Este projeto ficou em primeiro lugar no desafio proposto pela @casadodev!!
+![Certificado de vencedor](https://github.com/pedroddomingues/desafio-casa-do-dev/blob/main/certificado_de_vencedor1_Pedro%20Henrique%20Barbosa%20Domingues%20(1).png)
+
+
 # Documentação - Desafio Casa do Dev
 
 Esta é a minha implementação do desafio proposto pela Casa do Dev na edição NodeJS. Resolvi fazer o desafio para aprender e exercitar meus conhecimentos, por isso escolhi tecnologias que nunca tinha usado até então. Elas são:
