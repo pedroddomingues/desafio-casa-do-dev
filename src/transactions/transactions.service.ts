@@ -34,7 +34,7 @@ export class TransactionsService {
 	) {}
 
 	async deposit(createTransactionDto: CreateTransactionDto) {
-		let account = await this.AccountsService.findOneByCPF(
+		const account = await this.AccountsService.findOneByCPF(
 			createTransactionDto.cpf
 		);
 		if (!account)
@@ -252,7 +252,7 @@ export class TransactionsService {
 		account: AccountDocument,
 		value: number,
 		type: TransactionType,
-		from: String
+		from: string
 	) {
 		let newBalance = account.balance;
 		switch (type) {

@@ -14,7 +14,7 @@ export class SequentialKeysService {
 		private sequentialKeyModel: Model<SequentialKeyDocument>
 	) {}
 
-	async getSequentialKey(type: string): Promise<Number> {
+	async getSequentialKey(type: string): Promise<number> {
 		const sequentialKey = await this.sequentialKeyModel.findOne({ type });
 
 		if (!sequentialKey) {
@@ -28,7 +28,7 @@ export class SequentialKeysService {
 		return sequentialKey.value;
 	}
 
-	async createSequentialKey(type: string): Promise<Number> {
+	async createSequentialKey(type: string): Promise<number> {
 		const sequentialKey = new this.sequentialKeyModel({ type, value: 1 });
 
 		await sequentialKey.save();
@@ -36,7 +36,7 @@ export class SequentialKeysService {
 		return sequentialKey.value;
 	}
 
-	sequentialKeyToZerosString(sequentialKey: Number, size: number): String {
+	sequentialKeyToZerosString(sequentialKey: number, size: number): string {
 		const string = sequentialKey.toString();
 		const stringSize = string.length;
 		let result = "";

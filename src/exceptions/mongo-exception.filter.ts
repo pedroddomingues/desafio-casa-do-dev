@@ -27,7 +27,7 @@ export class MongoExceptionFilter implements ExceptionFilter {
 				message.push(`Duplicate record of "${field}" field.`);
 				statusCode = HttpStatus.BAD_REQUEST;
 				error = HttpStatus[statusCode];
-			}
+		}
 		response.status(statusCode).json({
 			error: {
 				statusCode: 400,

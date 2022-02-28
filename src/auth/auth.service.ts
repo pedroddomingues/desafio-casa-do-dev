@@ -1,4 +1,10 @@
-import { HttpException, HttpStatus, Inject, Injectable, forwardRef } from "@nestjs/common";
+import {
+	HttpException,
+	HttpStatus,
+	Inject,
+	Injectable,
+	forwardRef,
+} from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcrypt";
 import { User, UserDocument } from "src/users/entities/user.entity";
@@ -23,7 +29,7 @@ export class AuthService {
 				HttpStatus.BAD_REQUEST
 			);
 		}
-		if (await this.checkPassword( password, user)) {
+		if (await this.checkPassword(password, user)) {
 			user.password = undefined;
 			return user;
 		}
@@ -46,8 +52,7 @@ export class AuthService {
 
 	async checkPassword(password: string, user: User): Promise<boolean> {
 		const isMatch = await bcrypt.compare(password, user.password);
-		if (!isMatch)
-		{
+		if (!isMatch) {
 			throw new HttpException(
 				{
 					message: "Invalid credentials.",

@@ -6,7 +6,7 @@ import { UsersModule } from "./users/users.module";
 import { AccountsModule } from "./accounts/accounts.module";
 import { TransactionsModule } from "./transactions/transactions.module";
 import { SequentialKeysModule } from "./sequential-keys/sequential-keys.module";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
 	imports: [

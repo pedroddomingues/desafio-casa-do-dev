@@ -5,9 +5,9 @@ import { IsNotEmpty } from "class-validator";
 export class DepositantDto {
 	@ApiProperty()
 	@IsNotEmpty()
-	name: String;
+	name: string;
 
 	@IsCPF()
 	@ApiProperty()
-	cpf: String;
+	cpf: string;
 }
