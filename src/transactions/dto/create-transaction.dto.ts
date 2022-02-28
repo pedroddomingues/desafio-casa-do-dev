@@ -1,7 +1,15 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsCPF } from "brazilian-class-validator";
 import { Type } from "class-transformer";
-import { IsEnum, IsNotEmpty, IsObject, IsString, Min, ValidateIf, ValidateNested } from "class-validator";
+import {
+	IsEnum,
+	IsNotEmpty,
+	IsObject,
+	IsString,
+	Min,
+	ValidateIf,
+	ValidateNested,
+} from "class-validator";
 import { TransactionType } from "src/constants/transaction.type";
 import { DepositantDto } from "./depositant.dto";
 
@@ -21,7 +29,11 @@ export class CreateTransactionDto {
 	@ApiPropertyOptional()
 	password?: string;
 
-	@ValidateIf((o) => o.type === TransactionType.deposit || o.type === TransactionType.transfer)
+	@ValidateIf(
+		(o) =>
+			o.type === TransactionType.deposit ||
+			o.type === TransactionType.transfer
+	)
 	@IsString()
 	@ApiPropertyOptional()
 	cpf?: string;
@@ -29,7 +41,7 @@ export class CreateTransactionDto {
 	@ValidateIf((o) => o.type === TransactionType.deposit)
 	@ValidateNested()
 	@Type(() => DepositantDto)
-	@ApiPropertyOptional({ type: () => DepositantDto})
+	@ApiPropertyOptional({ type: () => DepositantDto })
 	depositant?: DepositantDto;
 
 	@ValidateIf((o) => o.type === TransactionType.payment)

@@ -12,7 +12,7 @@ import { AccountsModule } from "src/accounts/accounts.module";
 	imports: [
 		MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
 		SequentialKeysModule,
-		forwardRef(() => AccountsModule)
+		forwardRef(() => AccountsModule),
 	],
 	exports: [UsersService],
 	controllers: [UsersController],

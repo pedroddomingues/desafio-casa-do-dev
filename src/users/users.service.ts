@@ -48,14 +48,12 @@ export class UsersService {
 
 	async findOneByCPF(
 		cpf: string
-	): Promise<(User & UserDocument & { _id: any })> {
+	): Promise<User & UserDocument & { _id: any }> {
 		const user = await this.userModel.findOne({ cpf });
 		return user;
 	}
 
-	async findOneByID(
-		id: string
-	): Promise<(User & UserDocument & { _id: any })> {
+	async findOneByID(id: string): Promise<User & UserDocument & { _id: any }> {
 		const user = await this.userModel.findById(id);
 		return user;
 	}

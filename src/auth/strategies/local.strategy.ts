@@ -14,7 +14,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 		if (!user) {
 			throw new HttpException(
 				{
-					message: "Login failed. Make sure the credentials are correct.",
+					message:
+						"Login failed. Make sure the credentials are correct.",
 				},
 				HttpStatus.UNAUTHORIZED
 			);

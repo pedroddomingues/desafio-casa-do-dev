@@ -22,7 +22,10 @@ export class CreateUserDto {
 
 	@ApiProperty()
 	@IsPhone()
-	@Length(11, 11, { message: "Cellphone number must be 11 digits, 2 for DDD and 9 for number." })
+	@Length(11, 11, {
+		message:
+			"Cellphone number must be 11 digits, 2 for DDD and 9 for number.",
+	})
 	phone: string;
 
 	@ApiProperty()

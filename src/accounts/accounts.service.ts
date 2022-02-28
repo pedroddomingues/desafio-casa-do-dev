@@ -26,7 +26,7 @@ export class AccountsService {
 		createAccountDto: CreateAccountDto
 	): Promise<AccountDocument> | null {
 		const { userId, overdraftLimit } = createAccountDto;
-		let sequential_id_number =
+		const sequential_id_number =
 			await this.SequentialKeysService.getSequentialKey("account");
 		if (sequential_id_number === 0) {
 			return null;

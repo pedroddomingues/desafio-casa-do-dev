@@ -46,7 +46,7 @@ export class Transaction {
 	description?: string;
 
 	@Prop()
-	@ApiPropertyOptional({ type: () => DepositantDto})
+	@ApiPropertyOptional({ type: () => DepositantDto })
 	depositant?: DepositantDto;
 
 	@ApiProperty()
